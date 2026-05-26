@@ -23,3 +23,22 @@ pipeline {
         }
     }
 }
+post {
+
+        success {
+            slackSend(
+                channel: '#web-app',
+                color: 'good',
+                message: "SUCCESS: ${env.JOB_NAME} - Build ${env.BUILD_NUMBER}"
+            )
+        }
+
+        failure {
+            slackSend(
+                channel: '#web-app',
+                color: 'danger',
+                message: "FAILED: ${env.JOB_NAME} - Build ${env.BUILD_NUMBER}"
+            )
+        }
+    }
+}
