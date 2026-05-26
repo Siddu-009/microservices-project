@@ -22,8 +22,7 @@ pipeline {
             }
         }
     }
-}
-post {
+    post {
 
         success {
             slackSend(
